@@ -1,5 +1,6 @@
 import streamlit as st
 import random
+from streamlit_confetti import confetti
 st.set_page_config(page_title ="Number Guesser", page_icon="🎯", layout="centered")
 st.title("🎯 Guess The Secret Number!")
 st.write("Aneesh ne 1 se 100 ke beech ek number socha hai. Kya aap use pehchan sakte hain?")
@@ -30,7 +31,10 @@ if st.session_state.game_status == "PLAYING":
 
 if st.session_state.game_status == "WON":
     st.balloons()
+    time.sleep(2)
     st.success(f"👑 MUBARAK HO! Sahi jawab tha **{st.session_state.secret}**. Aap jeet gaye!🎉")
+    st.balloons()
+    confetti()
 
 if st.session_state.game_status == "LOST":
     st.error(f"😥 GAME OVER! Aapki saari lives khatam ho gayin. Sahi number tha: **{st.session_state.secret}**")
