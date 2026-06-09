@@ -36,7 +36,7 @@ if st.session_state.game_status == "LOST":
     st.error(f"😥 GAME OVER! Aapki saari lives khatam ho gayin. Sahi number tha: **{st.session_state.secret}**")
 
 if st.session_state.game_status != "PLAYING":
-    if st.button("Dubara Khelon 🔁"):
+    if st.button("Dubara Khelo 🔁"):
         st.session_state.secret = random.randint(1, 100)
         st.session_state.lives = 5
         st.session_state.game_status = "PLAYING"
