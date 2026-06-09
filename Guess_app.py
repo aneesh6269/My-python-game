@@ -37,7 +37,7 @@ if st.session_state.game_status == "LOST":
 
 if st.session_state.game_status != "PLAYING":
     if st.button("Dubara Khelon 🔁"):
-        st.session_state.secret = random.randint(11, 100)
+        st.session_state.secret = random.randint(1, 100)
         st.session_state.lives = 5
         st.session_state.game_status = "PLAYING"
         st.rerun()
