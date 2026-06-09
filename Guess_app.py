@@ -13,7 +13,7 @@ if "secret" not in st.session_state:
 
 if st.session_state.game_status == "PLAYING":
     st.subheader(f"Zindagi (Lives) bachi hain: { '❤️' *st.session_state.lives}")
-    user_guess = st.number_input("Apna Guess chunein (1, 100):", min_value= 1, max_value=100, value=00)
+    user_guess = st.number_input("Apna Guess chunein (1, 100):", min_value= 1, max_value= 100, value= 00)
 
     if st.button("Check Guess🚀"):
         if user_guess == st.session_state.secret:
