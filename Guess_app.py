@@ -42,7 +42,14 @@ login_html = """
         margin: 15px 0;
     }
 </style>
+
+<div class="login-container">
+    <div class="login-header"> 🎮 GAMER LOGIN PORTAL</div>
+    <div class="gold-divider"></div>
+    <div class="login-subtitle">👑 ANEESH ROYAL GAME</div>
+</div>
 """
+
 # HTML/JS for Patakha (Confetti) Effect
 confetti_js = """
 <canvas id="confetti" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;pointer-events:none;"></canvas>
@@ -61,12 +68,6 @@ confetti_js = """
     fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
     fire(0.1, { spread: 120, startVelocity: 45 });
 </script>
-"""
-<div class="login-container">
-    <div class="login-header"> 🎮 GAMER LOGIN PORTAL</div>
-    <div class="gold-divider"></div>
-    <div class="login-subtitle">👑 ANEESH ROYAL GAME</div>
-</div>
 """
 
 # Session State for Login Tracking
