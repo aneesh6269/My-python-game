@@ -111,7 +111,8 @@ else:
                     st.warning("📈 Thoda CHOTA (Lower) number socho!")
 
     if st.session_state.game_status == "WON":
-        st.balloons()
+        st.balloons()  # Isse balloons udenge 🎈
+        st.snow()      # Isse patakho jaise baraf girenge ✨
         st.success(f"👑 MUBARAK HO! Sahi jawab tha **{st.session_state.secret}**. Aap jeet gaye! 🎉")
 
     if st.session_state.game_status == "LOST":
