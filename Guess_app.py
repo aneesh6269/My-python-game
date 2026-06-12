@@ -44,7 +44,7 @@ login_html = """
 </style>
 
 <div class="login-container">
-    <div class="login-header">👑 ROYAL ARENA</div>
+    <div class="login-header">👑 ANEESH ROYAL GAME</div>
     <div class="gold-divider"></div>
     <div class="login-subtitle">Gamer Login Portal</div>
 </div>
@@ -66,7 +66,7 @@ if not st.session_state.logged_in:
     st.markdown("<br>", unsafe_allow_html=True)
     
     # Login Button
-    if st.button("ENTER ARENA 🚀"):
+    if st.button("ENTER GAME 🚀"):
         # Yahan aap apna username aur password badal sakte hain
         if username == "Aneesh" and password == "4321":
             st.session_state.logged_in = True
