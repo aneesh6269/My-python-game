@@ -43,6 +43,25 @@ login_html = """
     }
 </style>
 
+# HTML/JS for Patakha (Confetti) Effect
+confetti_js = """
+<canvas id="confetti" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;pointer-events:none;"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+    var count = 200;
+    var defaults = { origin: { y: 0.7 } };
+    function fire(particleRatio, opts) {
+      confetti(Object.assign({}, defaults, opts, {
+        particleCount: Math.floor(count * particleRatio)
+      }));
+    }
+    fire(0.25, { spread: 26, startVelocity: 55 });
+    fire(0.2, { spread: 60 });
+    fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+    fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+    fire(0.1, { spread: 120, startVelocity: 45 });
+</script>
+"""
 <div class="login-container">
     <div class="login-header"> 🎮 GAMER LOGIN PORTAL</div>
     <div class="gold-divider"></div>
@@ -112,7 +131,7 @@ else:
 
     if st.session_state.game_status == "WON":
         st.balloons()  # Isse balloons udenge 🎈
-        st.snow()      # Isse patakho jaise baraf girenge ✨
+        st.components.v1.html(confetti_js, height=0) # Isse patakho jaise baraf girenge ✨
         st.success(f"👑 MUBARAK HO! Sahi jawab tha **{st.session_state.secret}**. Aap jeet gaye! 🎉")
 
     if st.session_state.game_status == "LOST":
