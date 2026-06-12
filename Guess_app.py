@@ -44,9 +44,9 @@ login_html = """
 </style>
 
 <div class="login-container">
-    <div class="login-header">👑 ANEESH ROYAL GAME</div>
+    <div class="login-header">👑 GAMER LOGIN PORTAL</div>
     <div class="gold-divider"></div>
-    <div class="login-subtitle">Gamer Login Portal</div>
+    <div class="login-subtitle">ANEESH ROYAL GAME</div>
 </div>
 """
 
