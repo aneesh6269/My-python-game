@@ -42,7 +42,7 @@ login_html = """
         margin: 15px 0;
     }
 </style>
-
+"""
 # HTML/JS for Patakha (Confetti) Effect
 confetti_js = """
 <canvas id="confetti" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;pointer-events:none;"></canvas>
