@@ -126,7 +126,7 @@ if not st.session_state.logged_in:
     pwd = st.text_input("🔑 Password", type="password", placeholder="Enter password...")
     
     st.markdown("<br>", unsafe_allow_html=True)
-    if st.button("ENTER ARENA 🚀"):
+    if st.button("ENTER GAME 🚀"):
         if user == "Aneesh" and pwd == "43214":
             st.session_state.logged_in = True
             st.rerun()
