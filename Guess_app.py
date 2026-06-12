@@ -73,7 +73,7 @@ if not st.session_state.logged_in:
             st.success("Access Granted! Loading Game...")
             st.rerun()
         else:
-            st.error("Invalid Royal Credentials! Try Again.")
+            st.error("Invalid Login Credentials! Try Again.")
 
 # ---- ACTUAL GAME SCREEN (Sirf login hone ke baad dikhega) ----
 else:
