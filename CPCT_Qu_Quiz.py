@@ -551,12 +551,12 @@ else:
     st.markdown(f'<div class="question-box"><b>EN:</b> {current_q["q_eng"]}<div class="hindi-text"><b>HI:</b> {current_q["q_hin"]}</div></div>', unsafe_allow_html=True)
         
         # FIX 1: Agar answer submit ho chuka hai, toh disabled=True ho jayega (yaani change nahi ho payega)
-        choice = st.radio(
-            "Sahi jawab chuniye / Choose correct option:", 
-            current_q["options"], 
-            index=None, 
-            key=f"q_{st.session_state.q_index}",
-            disabled=st.session_state.submitted
+    choice = st.radio(
+        "Sahi jawab chuniye / Choose correct option:", 
+        current_q["options"], 
+        index=None, 
+        key=f"q_{st.session_state.q_index}",
+        disabled=st.session_state.submitted
         )
         
         st.write("---")
