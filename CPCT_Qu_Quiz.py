@@ -305,7 +305,7 @@ for i in range(1, 76):
             q_hin = "शिक्षिका को MS-Excel 2019 में डेटा टैब के अंतर्गत डेटा को आरोही क्रम में व्यवस्थित करने के लिए किस विकल्प का उपयोग करना चाहिए?"
             opts = ["Sort (सॉर्ट)", "Format", "Filter", "Design"]
             ans = "Sort (सॉर्ट)"
-elif i == 45:
+        elif i == 45:
             q_eng = "Which of the following keyboard shortcuts is used to select an entire column in MS-Excel 2019?"
             q_hin = "MS-Excel 2019 में संपूर्ण कॉलम का चयन करने के लिए निम्नलिखित में से किस कीबोर्ड शॉर्टकट कुंजी का उपयोग किया जाता है?"
             opts = ["Ctrl + Spacebar", "Alt + Spacebar", "Shift + Spacebar", "Spacebar"]
