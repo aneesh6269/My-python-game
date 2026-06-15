@@ -383,8 +383,8 @@ for i in range(1, 76):
             ans = "Grandparents do not know proper way of celebrating festivals"
 
       # --- QUANTITATIVE APTITUDE SECTION (Q58 to Q63) ---
-       elif i <= 63:
-           sect = "Quantitative Aptitude (Maths)"
+    elif i <= 63:
+        sect = "Quantitative Aptitude (Maths)"
         if i == 58:
             q_eng = "What approximate value should come in place of question mark? 1002 / 49 * 99 - 1299 = ?"
             q_hin = "निम्नलिखित समीकरण में प्रश्न चिह्न (?) के स्थान पर लगभग कितना मान आना चाहिए? 1002 ÷ 49 × 99 - 1299 = ?"
