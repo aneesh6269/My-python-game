@@ -562,39 +562,37 @@ else:
     st.write("---")
         
         # Navigation Buttons Grid (Previous and Lock/Next layout)
-        col1, col2 = st.columns(2)
-        
-        with col1:
+    col1, col2 = st.columns(2)
+    with col1:
             # FIX 2: Previous Question Button (Sirf tabhi dikhega jab hum Pehle sawal se aage honge)
-            if st.session_state.q_index > 0:
-                if st.button("⬅️ Previous Question"):
-                    st.session_state.q_index -= 1
-                    st.session_state.submitted = False
-                    st.rerun()
+         if st.session_state.q_index > 0:
+             if st.button("⬅️ Previous Question"):
+                 st.session_state.q_index -= 1
+                 st.session_state.submitted = False
+                 st.rerun()
                     
-        with col2:
-            if not st.session_state.submitted:
+    with col2:
+        if not st.session_state.submitted:
                 if st.button("🔒 Lock Answer"):
                     if choice is not None:
                         st.session_state.submitted = True
                         if choice == current_q["answer"]:
                             st.session_state.score += 1
-                        st.rerun()
-                    else:
-                        st.warning("Kripya pehle ek option select kijiye!")
+                            st.rerun()
+                        else:
+                            st.warning("Kripya pehle ek option select kijiye!")
+        else:
+            if choice == current_q["answer"]:
+                st.success(f"🎉 Sahi Jawab! (+1 Mark)")
             else:
-                if choice == current_q["answer"]:
-                    st.success(f"🎉 Sahi Jawab! (+1 Mark)")
-                else:
-                    st.error(f"❌ Galat Jawab! Sahi Answer tha: {current_q['answer']}")
-                    
+                st.error(f"❌ Galat Jawab! Sahi Answer tha: {current_q['answer']}")
                 if st.button("Next Question ➡️"):
                     if st.session_state.q_index < len(quiz_data) - 1:
                         st.session_state.q_index += 1
                         st.session_state.submitted = False
                     else:
                         st.session_state.quiz_over = True
-                    st.rerun()
+                        st.rerun()
 
         # Displaying English & Hindi combined split nicely
         st.markdown(f'<div class="question-box"><b>EN:</b> {current_q["q_eng"]}<div class="hindi-text"><b>HI:</b> {current_q["q_hin"]}</div></div>', unsafe_allow_html=True)
