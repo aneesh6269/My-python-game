@@ -115,7 +115,7 @@ for i in range(1, 76):
             opts = ["Tally", "Coda", "Jupyter", "SnapTouch"]
             ans = "Jupyter"
         elif i == 9:
-            q = "Which of the following is utility software?"
+            q = "Which of the_following is utility software?"
             opts = ["Avast Antivirus", "BIOS", "Android", "MS-Word"]
             ans = "Avast Antivirus"
         elif i == 10:
@@ -400,4 +400,40 @@ else:
             st.session_state.submitted = False
             st.rerun()
 
-    # Quiz Questions Live Int
+    # Quiz Questions Live Inter
+    else:
+        current_q = quiz_data[st.session_state.q_index]
+        
+        st.markdown(f'<div class="main-card"><div class="section-badge">🎯 {current_q["section"]}</div><div class="header-text">CPCT Simulation Arena</div></div>', unsafe_allow_html=True)
+        
+        st.write(f"**Question {st.session_state.q_index + 1} of {len(quiz_data)}**")
+        st.progress((st.session_state.q_index) / len(quiz_data))
+        
+        st.markdown(f'<div class="question-box">{current_q["q"]}</div>', unsafe_allow_html=True)
+        
+        choice = st.radio("Sahi jawab chuniye:", current_q["options"], index=None, key=f"q_{st.session_state.q_index}")
+        
+        st.write("---")
+        
+        if not st.session_state.submitted:
+            if st.button("🔒 Lock Answer"):
+                if choice is not None:
+                    st.session_state.submitted = True
+                    if choice == current_q["answer"]:
+                        st.session_state.score += 1
+                    st.rerun()
+                else:
+                    st.warning("Kripya pehle ek option select kijiye!")
+        else:
+            if choice == current_q["answer"]:
+                st.success(f"🎉 Sahi Jawab! (+1 Mark)")
+            else:
+                st.error(f"❌ Galat Jawab! Sahi Answer tha: {current_q['answer']}")
+                
+            if st.button("Next Question ➡️"):
+                if st.session_state.q_index < len(quiz_data) - 1:
+                    st.session_state.q_index += 1
+                    st.session_state.submitted = False
+                else:
+                    st.session_state.quiz_over = True
+                st.rerun()
