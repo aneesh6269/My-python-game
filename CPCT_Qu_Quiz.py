@@ -462,10 +462,9 @@ if not st.session_state.logged_in:
                 st.session_state.submitted = False
                 st.rerun()
 
-    # Active Live Question Layout
-        # ---- IS CODE BLOCK KO BADLIYE (REPLACE THIS BLOCK) ----
+    # Active Live Question Layout#
     else:
-        current_q = quiz_data[st.session_state.q_index]
+        st.current_q = quiz_data[st.session_state.q_index]
         
         st.markdown(f'<div class="main-card"><div class="section-badge">🎯 {current_q["section"]}</div><div class="header-text">CPCT Simulation Arena</div></div>', unsafe_allow_html=True)
         
