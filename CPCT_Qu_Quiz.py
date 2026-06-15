@@ -1,9 +1,9 @@
 import streamlit as st
 
 # Page configuration for mobile view
-st.set_page_config(page_title="Aneesh Make CPCT Qu. Quiz", page_icon="🎓", layout="centered")
+st.set_page_config(page_title="ANEESH MAKE CPCT QUIZ", page_icon="🎓", layout="centered")
 
-# --- 1. NEON GOLD GLOW CSS ---
+# --- 1. NEON GOLD GLOW CSS FOR LOGIN & GAME ---
 design_css = """
 <style>
     .stApp { 
@@ -14,7 +14,7 @@ design_css = """
         background: #1f1f1f;
         padding: 25px;
         border-radius: 15px;
-        box-shadow: 0px 0px 25px rgba(197, 160, 89, 0.5);
+        box-shadow: 0px 0px 25px rgba(197, 160, 89, 0.6);
         border: 2px solid #c5a059;
         text-align: center;
         margin-bottom: 20px;
@@ -22,9 +22,20 @@ design_css = """
     }
     @keyframes glow {
         from { box-shadow: 0 0 15px rgba(197, 160, 89, 0.4); }
-        to { box-shadow: 0 0 30px rgba(255, 215, 0, 0.7); }
+        to { box-shadow: 0 0 30px rgba(255, 215, 0, 0.8); }
     }
-    .header-text { color: #ffd700; font-family: 'Georgia', serif; font-size: 30px; font-weight: bold; }
+    .header-text { 
+        color: #ffd700; 
+        font-family: 'Georgia', serif; 
+        font-size: 32px; 
+        font-weight: bold;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    .gold-line { 
+        height: 2px; 
+        background: linear-gradient(to right, transparent, #ffd700, transparent); 
+        margin: 15px 0; 
+    }
     .section-badge {
         background-color: #c5a059;
         color: #000000;
@@ -43,6 +54,11 @@ design_css = """
         border-left: 5px solid #ffd700;
         margin-bottom: 20px;
         font-size: 18px;
+    }
+    .stTextInput>div>div>input {
+        background-color: #2b2b2b !important;
+        color: white !important;
+        border: 1px solid #c5a059 !important;
     }
     .stButton>button {
         width: 100% !important;
@@ -63,11 +79,8 @@ st.markdown(design_css, unsafe_allow_html=True)
 
 # --- 2. FULL 75 QUESTIONS DATA BANK ---
 quiz_data = []
-
-# Automated loop to dynamically create exactly 75 valid test entries
 for i in range(1, 76):
     if i <= 52:
-        # Base Computer Section mapped directly from actual test allocations
         sect = "Computer Proficiency & IT Skills"
         if i == 1:
             q = "Cache and main memory will lose their contents when the power of a computer is off. This property is referred to as ____________."
@@ -250,7 +263,6 @@ for i in range(1, 76):
             opts = ["Ctrl + Spacebar", "Alt + Spacebar", "Shift + Spacebar", "Spacebar"]
             ans = "Ctrl + Spacebar"
         else:
-            # Filling the remaining core computer items up to 52 dynamically
             q = f"Which component handles primary pipeline routing configurations in modern CPU models? (Standard CPCT core systems verification Item {i})"
             opts = ["ALU Control", "Instruction Cache", "Control Unit", "Data Registers"]
             ans = "Control Unit"
@@ -293,7 +305,7 @@ for i in range(1, 76):
             ans = "Clank"
         elif i == 68:
             q = "What should come in place of the question mark (?) in the given series? 17, 28, 39, 50, 61, ?"
-            opts = ["72", "70", "80", "72"]
+            opts = ["72", "70", "80", "75"]
             ans = "72"
         else:
             q = f"In a certain code language, if COMPUTER is written as OCPMUTRE, how will REASONING be managed? (Text conversion substitute variant {i})"
@@ -329,63 +341,63 @@ for i in range(1, 76):
             
     quiz_data.append({"section": sect, "q": q, "options": opts, "answer": ans})
 
-# --- 3. STATE CONTROLLER ---
+# --- 3. SESSION STATE TRACKING ---
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
+
 if "q_index" not in st.session_state:
     st.session_state.q_index = 0
     st.session_state.score = 0
     st.session_state.quiz_over = False
-    st.session_state.selected_option = None
     st.session_state.submitted = False
 
-# --- 4. GAME OVER SCOREBOARD ---
-if st.session_state.quiz_over:
-    st.markdown('<div class="main-card"><div class="header-text">🏆 ARENA RESULTS 🏆</div></div>', unsafe_allow_html=True)
-    total_qs = len(quiz_data)
-    final_score = st.session_state.score
+# ---- A. NEON GLOW LOGIN SCREEN ----
+if not st.session_state.logged_in:
+    st.markdown('<div class="main-card"><div class="header-text">👑 ANEESH CPCT QU. QUIZ </div><div class="gold-line"></div><p style="color:#ffd700; letter-spacing:3px; font-weight:bold;">⚡ CPCT TEST LOGIN ⚡</p></div>', unsafe_allow_html=True)
     
-    st.metric(label="Aapka Total Score", value=f"{final_score} / {total_qs}")
+    user = st.text_input("👤 Username", placeholder="Enter name...")
+    pwd = st.text_input("🔑 Password", type="password", placeholder="Enter password...")
     
-    if final_score >= 38:  # 38 marks out of 75 is the actual official CPCT passing threshold!
-        st.balloons()
-        st.success(f"👑 MUBARAK HO! Aapne Arena Clear kar liya! Absolute Champion!")
-    else:
-        st.error("😥 Pass ke liye 28 marks zaroori hain. Fir se koshish kijiye, aap kar sakte hain!")
-        
-    if st.button("🔄 Restart Quiz Arena"):
+    st.markdown("<br>", unsafe_allow_html=True)
+    if st.button("ENTER QUIZ 🚀"):
+        if user == "Aneesh" and pwd == "626069":
+            st.session_state.logged_in = True
+            st.rerun()
+        else:
+            st.error("Invalid Credentials!")
+
+# ---- B. ACTUAL ACTIVE QUIZ ARENA ----
+else:
+    # Sidebar triggers
+    if st.sidebar.button("Logout 🚪"):
+        st.session_state.logged_in = False
+        st.rerun()
+    if st.sidebar.button("Reset Exam 🔄"):
         st.session_state.q_index = 0
         st.session_state.score = 0
         st.session_state.quiz_over = False
         st.session_state.submitted = False
-        st.session_state.selected_option = None
         st.rerun()
 
-# --- 5. LIVE QUIZ INTERFACE ---
-else:
-    current_q = quiz_data[st.session_state.q_index]
-    
-    st.markdown(f'<div class="main-card"><div class="section-badge">🎯 {current_q["section"]}</div><div class="header-text">CPCT Simulation Arena</div></div>', unsafe_allow_html=True)
-    
-    st.write(f"**Question {st.session_state.q_index + 1} of {len(quiz_data)}**")
-    st.progress((st.session_state.q_index) / len(quiz_data))
-    
-    st.markdown(f'<div class="question-box">{current_q["q"]}</div>', unsafe_allow_html=True)
-    
-    choice = st.radio("Sahi jawab chuniye:", current_q["options"], index=None, key=f"q_{st.session_state.q_index}")
-    
-    st.write("---")
-    
-    if not st.session_state.submitted:
-        if st.button("🔒 Lock Answer"):
-            if choice is not None:
-                st.session_state.selected_option = choice
-                st.session_state.submitted = True
-                if choice == current_q["answer"]:
-                    st.session_state.score += 1
-                st.rerun()
-            else:
-                st.warning("Kripya pehle ek option select kijiye!")
-    else:
-        if st.session_state.selected_option == current_q["answer"]:
-            st.success(f"🎉 Sahi Jawab! (+1 Mark)")
+    # Score End System Trigger
+    if st.session_state.quiz_over:
+        st.markdown('<div class="main-card"><div class="header-text">🏆 QUIZ RESULTS 🏆</div></div>', unsafe_allow_html=True)
+        total_qs = len(quiz_data)
+        final_score = st.session_state.score
+        
+        st.metric(label="Aapka Total Score", value=f"{final_score} / {total_qs}")
+        
+        if final_score >= 28:  
+            st.balloons()
+            st.success(f"👑 MUBARAK HO! Aapne Quiz Clear kar liya! Absolute Champion!")
         else:
-            st.error(f"❌ Galat Jawab! Sahi Answer tha: **{current_q['answer']}**")
+            st.error("😥 Pass hone ke liye 28 marks zaroori hain. Fir se koshish kijiye!")
+            
+        if st.button("🔄 Restart Quiz "):
+            st.session_state.q_index = 0
+            st.session_state.score = 0
+            st.session_state.quiz_over = False
+            st.session_state.submitted = False
+            st.rerun()
+
+    # Quiz Questions Live Int
