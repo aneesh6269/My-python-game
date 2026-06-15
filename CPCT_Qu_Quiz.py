@@ -433,6 +433,40 @@ if not st.session_state.logged_in:
 # ---- B. ACTUAL ACTIVE QUIZ ARENA ----
      
     else:
+    if st.sidebar.button("Logout 🚪"):
+        st.session_state.logged_in = False
+        st.rerun()
+    if st.sidebar.button("Reset Exam 🔄"):
+        st.session_state.q_index = 0
+        st.session_state.score = 0
+        st.session_state.quiz_over = False
+        st.session_state.submitted = False
+        st.rerun()
+
+    # Results System
+    if st.session_state.quiz_over:
+        st.markdown('<div class="main-card"><div class="header-text">🏆 QUIZ RESULTS 🏆</div></div>', unsafe_allow_html=True)
+        total_qs = len(quiz_data)
+        final_score = st.session_state.score
+        
+        st.metric(label="Aapka Total Score", value=f"{final_score} / {total_qs}")
+        
+        if final_score >= 28:  
+            st.balloons()
+            st.success(f"👑 MUBARAK HO! Aapne Quiz Clear kar liya! Absolute Champion!")
+        else:
+            st.error("😥 Pass hone ke liye 28 marks zaroori hain. Fir se koshish kijiye!")
+            
+        if st.button("🔄 Restart Quiz "):
+            st.session_state.q_index = 0
+            st.session_state.score = 0
+            st.session_state.quiz_over = False
+            st.session_state.submitted = False
+            st.rerun()
+
+    # Active Live Question Layout
+        # ---- IS CODE BLOCK KO BADLIYE (REPLACE THIS BLOCK) ----
+    else:
         current_q = quiz_data[st.session_state.q_index]
         
         st.markdown(f'<div class="main-card"><div class="section-badge">🎯 {current_q["section"]}</div><div class="header-text">CPCT Simulation Arena</div></div>', unsafe_allow_html=True)
@@ -450,6 +484,7 @@ if not st.session_state.logged_in:
             key=f"q_{st.session_state.q_index}",
             disabled=st.session_state.submitted
         )
+        
         st.write("---")
         
         # Navigation Buttons Grid (Previous and Lock/Next layout)
@@ -487,37 +522,6 @@ if not st.session_state.logged_in:
                         st.session_state.quiz_over = True
                     st.rerun()
 
-
-    # Results System
-    if st.session_state.quiz_over:
-        st.markdown('<div class="main-card"><div class="header-text">🏆 QUIZ RESULTS 🏆</div></div>', unsafe_allow_html=True)
-        total_qs = len(quiz_data)
-        final_score = st.session_state.score
-        
-        st.metric(label="Aapka Total Score", value=f"{final_score} / {total_qs}")
-        
-        if final_score >= 28:  
-            st.balloons()
-            st.success(f"👑 MUBARAK HO! Aapne Quiz Clear kar liya! Absolute Champion!")
-        else:
-            st.error("😥 Pass hone ke liye 28 marks zaroori hain. Fir se koshish kijiye!")
-            
-        if st.button("🔄 Restart Quiz "):
-            st.session_state.q_index = 0
-            st.session_state.score = 0
-            st.session_state.quiz_over = False
-            st.session_state.submitted = False
-            st.rerun()
-
-    # Active Live Question Layout
-    else:
-        current_q = quiz_data[st.session_state.q_index]
-        
-        st.markdown(f'<div class="main-card"><div class="section-badge">🎯 {current_q["section"]}</div><div class="header-text">CPCT 🗞️PAPER TEST</div></div>', unsafe_allow_html=True)
-        
-        st.write(f"**Question {st.session_state.q_index + 1} of {len(quiz_data)}**")
-        st.progress((st.session_state.q_index) / len(quiz_data))
-        
         # Displaying English & Hindi combined split nicely
         st.markdown(f'<div class="question-box"><b>EN:</b> {current_q["q_eng"]}<div class="hindi-text"><b>HI:</b> {current_q["q_hin"]}</div></div>', unsafe_allow_html=True)
         
