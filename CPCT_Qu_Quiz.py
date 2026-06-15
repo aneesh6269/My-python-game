@@ -463,15 +463,12 @@ if not st.session_state.logged_in:
                 st.rerun()
 
     # Active Live Question Layout#
-    else:
-        st.current_q = quiz_data[st.session_state.q_index]
-        
-        st.markdown(f'<div class="main-card"><div class="section-badge">🎯 {current_q["section"]}</div><div class="header-text">CPCT Simulation Arena</div></div>', unsafe_allow_html=True)
-        
-        st.write(f"**Question {st.session_state.q_index + 1} of {len(quiz_data)}**")
-        st.progress((st.session_state.q_index) / len(quiz_data))
-        
-        st.markdown(f'<div class="question-box"><b>EN:</b> {current_q["q_eng"]}<div class="hindi-text"><b>HI:</b> {current_q["q_hin"]}</div></div>', unsafe_allow_html=True)
+       else:
+           st.current_q = quiz_data[st.session_state.q_index]
+           st.markdown(f'<div class="main-card"><div class="section-badge">🎯 {current_q["section"]}</div><div class="header-text">CPCT Simulation Arena</div></div>', unsafe_allow_html=True)
+           st.write(f"**Question {st.session_state.q_index + 1} of {len(quiz_data)}**")
+           st.progress((st.session_state.q_index) / len(quiz_data))
+           st.markdown(f'<div class="question-box"><b>EN:</b> {current_q["q_eng"]}<div class="hindi-text"><b>HI:</b> {current_q["q_hin"]}</div></div>', unsafe_allow_html=True)
         
         # FIX 1: Agar answer submit ho chuka hai, toh disabled=True ho jayega (yaani change nahi ho payega)
         choice = st.radio(
