@@ -559,7 +559,7 @@ else:
         disabled=st.session_state.submitted
         )
         
-        st.write("---")
+    st.write("---")
         
         # Navigation Buttons Grid (Previous and Lock/Next layout)
         col1, col2 = st.columns(2)
