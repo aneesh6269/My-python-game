@@ -433,36 +433,34 @@ if not st.session_state.logged_in:
 # ---- B. ACTUAL ACTIVE QUIZ ARENA ----
      
     else:
-    if st.sidebar.button("Logout 🚪"):
-        st.session_state.logged_in = False
-        st.rerun()
-    if st.sidebar.button("Reset Exam 🔄"):
-        st.session_state.q_index = 0
-        st.session_state.score = 0
-        st.session_state.quiz_over = False
-        st.session_state.submitted = False
-        st.rerun()
+        if st.sidebar.button("Logout 🚪"):
+            st.session_state.logged_in = False
+            st.rerun()
+        if st.sidebar.button("Reset Exam 🔄"):
+            st.session_state.q_index = 0
+            st.session_state.score = 0
+            st.session_state.quiz_over = False
+            st.session_state.submitted = False
+            st.rerun()
 
     # Results System
-    if st.session_state.quiz_over:
-        st.markdown('<div class="main-card"><div class="header-text">🏆 QUIZ RESULTS 🏆</div></div>', unsafe_allow_html=True)
-        total_qs = len(quiz_data)
-        final_score = st.session_state.score
-        
-        st.metric(label="Aapka Total Score", value=f"{final_score} / {total_qs}")
+        if st.session_state.quiz_over:
+            st.markdown('<div class="main-card"><div class="header-text">🏆 QUIZ RESULTS 🏆</div></div>', unsafe_allow_html=True)
+            total_qs = len(quiz_data)
+            final_score = st.session_state.score
+            st.metric(label="Aapka Total Score", value=f"{final_score} / {total_qs}")
         
         if final_score >= 28:  
             st.balloons()
             st.success(f"👑 MUBARAK HO! Aapne Quiz Clear kar liya! Absolute Champion!")
         else:
             st.error("😥 Pass hone ke liye 28 marks zaroori hain. Fir se koshish kijiye!")
-            
-        if st.button("🔄 Restart Quiz "):
-            st.session_state.q_index = 0
-            st.session_state.score = 0
-            st.session_state.quiz_over = False
-            st.session_state.submitted = False
-            st.rerun()
+            if st.button("🔄 Restart Quiz "):
+                st.session_state.q_index = 0
+                st.session_state.score = 0
+                st.session_state.quiz_over = False
+                st.session_state.submitted = False
+                st.rerun()
 
     # Active Live Question Layout
         # ---- IS CODE BLOCK KO BADLIYE (REPLACE THIS BLOCK) ----
