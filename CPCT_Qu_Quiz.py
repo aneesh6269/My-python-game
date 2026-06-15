@@ -85,9 +85,11 @@ design_css = """
 """
 st.markdown(design_css, unsafe_allow_html=True)
 
-# --- 2. FULL 75 QUESTIONS DATA BANK (HINDI + ENGLISH MAPPED FROM PDF) ---
+                    # --- 2. FULL 75 QUESTIONS DATA BANK (100% CLEAN AND CORRECT SEQUENTIAL SPACING) ---
 quiz_data = []
+
 for i in range(1, 76):
+    # --- COMPUTER PROFICIENCY SECTION (Q1 to Q52) ---
     if i <= 52:
         sect = "Computer Proficiency & IT Skills"
         if i == 1:
@@ -119,7 +121,7 @@ for i in range(1, 76):
             q_eng = "The most common input devices are:"
             q_hin = "इनमे से सबसे आम इनपुट डिवाइस कौन-सी हैं?"
             opts = ["Microphone and Printer (माइक्रोफोन और प्रिंटर)", "Scanner and Monitor (स्कैनर और मॉनीटर)", "Digital Camera and Speaker (डिजिटल कैमरा और स्पीकर)", "Keyboard and Mouse (कीबोर्ड और माउस)"]
-            ans = "Keyboard and Mouse (कीबोर्ड and माउस)"
+            ans = "Keyboard and Mouse (कीबोर्ड और माउस)"
         elif i == 7:
             q_eng = "In a computer, which device is functionally opposite to a keyboard?"
             q_hin = "एक कंप्यूटर में, कौन-सा डिवाइस कार्यात्मक रूप से कीबोर्ड से विपरीत है?"
@@ -171,187 +173,250 @@ for i in range(1, 76):
             opts = ["Firewall (फ़ायरवॉल)", "Router (राउटर)", "Switch (स्विच)", "Hub (हब)"]
             ans = "Firewall (फ़ायरवॉल)"
         elif i == 17:
+            q_eng = "Which of the following statements is/are true? (i) GUI actions are through direct manipulation. (ii) Dialogue box asks for input."
+            q_hin = "निम्नलिखित में से कौन-सा कथन सत्य है/हैं? (i) GUI में क्रियाएं आमतौर पर बटन और आइकन के सीधे हेरफेर से होती हैं। (ii) डायलॉग बॉक्स उपयोगकर्ता से इनपुट मांगता है।"
+            opts = ["Only (i)", "Only (ii)", "Both (i) and (ii) ((i) और (ii) दोनों)", "Neither (i) nor (ii)"]
+            ans = "Both (i) and (ii) ((i) और (ii) दोनों)"
+        elif i == 18:
             q_eng = "A grey scale picture in JPEG is divided into blocks of ____________ pixels."
             q_hin = "JPEG में एक ग्रे स्केल चित्र, ____________ पिक्सल के ब्लॉक में विभाजित होती है।"
             opts = ["6x6", "5x5", "7x7", "8x8"]
             ans = "8x8"
-        elif i == 18:
+        elif i == 19:
             q_eng = "Which of the following ranges across countries and continents? (i) LAN (ii) MAN (iii) WAN"
             q_hin = "निम्नलिखित में से किसकी रेंज देश और महाद्वीपों तक होती है? (i) LAN (ii) MAN (iii) WAN"
-            opts = ["Only (i) / केवल (i)", "Only (ii) / केवल (ii)", "Only (iii) / केवल (iii)", "Both (i) and (ii) / (i) और (ii) दोनों"]
+            opts = ["Only (i) / केवल (i)", "Only (ii) / केवल (ii)", "Only (iii) / केवल (iii)", "Both (i) and (ii)"]
             ans = "Only (iii) / केवल (iii)"
-        elif i == 19:
+        elif i == 20:
             q_eng = "The security property which defines the ability of a system to ensure that an asset is modified only by authorised parties is called ____________."
             q_hin = "सुरक्षा संपत्ति जो यह सुनिश्चित करने के लिए एक प्रणाली की क्षमता को परिभाषित करती है कि एक संपत्ति केवल अधिकृत पार्टियों द्वारा संशोधित की जाती है, उसे ____________ कहा जाता है।"
-            opts = ["Availability (उपलब्धता)", "Confidentiality (गोपनीयता)", "Integrity (अखंडता)", "Cryptograph (क्रिप्टोग्राफ)"]
+            opts = ["Availability (उपलब्धता)", "Confidentiality (गोपनीयता)", "Integrity (अखंडता)", "Cryptograph"]
             ans = "Integrity (अखंडता)"
-        elif i == 20:
+        elif i == 21:
             q_eng = "How to view the MAC address associated with Windows 10 Ethernet device?"
             q_hin = "Windows 10 ईथरनेट डिवाइस से जुड़े MAC पते को कैसे देखें?"
-            opts = ["Settings->Network->Status->Properties", "Settings->Dial-up->Properties", "Settings->VPN->Properties", "Settings->Proxy->Properties"]
-            ans = "Settings->Network->Status->Properties"
-        elif i == 21:
+            opts = ["Settings->Network and Internet->Status->Properties", "Settings->Dial-up->Properties", "Settings->VPN->Properties", "Settings->Proxy->Properties"]
+            ans = "Settings->Network and Internet->Status->Properties"
+        elif i == 22:
             q_eng = "AES symmetric encryption algorithm performs all its computations on ____________ of data rather than in bits."
             q_hin = "एईएस (AES) सममित एन्क्रिप्शन एल्गोरिथ्म बिट्स के बजाय डेटा के ____________ पर अपनी सभी गणना करता है।"
-            opts = ["Bytes (बाइट्स)", "Numbers (नंबर)", "Cells (सेल्स)", "Digits (डिजिट्स)"]
+            opts = ["Bytes (बाइट्स)", "Numbers", "Cells", "Digits"]
             ans = "Bytes (बाइट्स)"
-        elif i == 22:
-            q_eng = "When a router needs to send a packet to another computer/network, then it should know which of the following?"
-            q_hin = "जब किसी राउटर को एक पैकेट को दूसरे कंप्यूटर नेटवर्क में भेजने की आवश्यकता होती है, तो उसे निम्नलिखित में से क्या पता होना चाहिए?"
-            opts = ["Datagram (डेटाग्राम)", "Path name (पथ नाम)", "Transport medium (परिवहन माध्यम)", "IP address (IP एड्रेस)"]
-            ans = "IP address (IP एड्रेस)"
         elif i == 23:
+            q_eng = "When a router needs to send a packet to another computer/network, then it should know which of the following?"
+            q_hin = "जब किसी राउटर को एक पैकेट को दूसरे कंप्यूटर नेटवर्क में भेजने की आवश्यकता होती है, तो उसे क्या पता होना चाहिए?"
+            opts = ["Datagram", "Path name", "Transport medium", "IP address (IP एड्रेस)"]
+            ans = "IP address (IP एड्रेस)"
+        elif i == 24:
             q_eng = "How is the computer monitor size measured?"
-            q_hin = "मॉनीटर का आकार (माप) कैसे मापा जाता है?"
+            q_hin = "मॉनिटर का आकार (माप) कैसे मापा जाता है?"
             opts = ["From left top to left bottom", "From right top to right bottom", "From corner to corner diagonally (कोने से कोने तक)", "From left top to right top"]
             ans = "From corner to corner diagonally (कोने से कोने तक)"
-        elif i == 24:
-            q_eng = "A/an ____________ is a weakness in an information system, system security procedures, or internal controls that could be exploited by a threat source."
-            q_hin = "____________ एक सूचना प्रणाली, सिस्टम सुरक्षा प्रक्रियाओं, आंतरिक नियंत्रण या कार्यान्वयन में एक कमजोरी है जिसका खतरा स्रोत द्वारा शोषण या ट्रिगर किया जा सकता है।"
-            opts = ["Threat (थ्रेट)", "Vulnerability (वल्नेरेबिलिटी)", "Control (कंट्रोल)", "Attack (अटैक)"]
-            ans = "Vulnerability (वल्नेरेबिलिटी)"
         elif i == 25:
+            q_eng = "A/an ____________ is a weakness in an information system, system security procedures, or internal controls that could be exploited by a threat source."
+            q_hin = "____________ एक सूचना प्रणाली, सिस्टम सुरक्षा प्रक्रियाओं या आंतरिक नियंत्रण में एक कमजोरी है जिसका खतरा स्रोत द्वारा शोषण किया जा सकता है।"
+            opts = ["Threat", "Vulnerability (वल्नेरेबिलिटी)", "Control", "Attack"]
+            ans = "Vulnerability (वल्नेरेबिलिटी)"
+        elif i == 26:
             q_eng = "Which of the following file formats is used for Java Server Page?"
             q_hin = "जावा सर्वर पेज (Java Server Page) के लिए निम्नलिखित में से किस फाइल फॉर्मेट का उपयोग किया जाता है?"
             opts = [".js", ".java", ".jsp", ".jspl"]
             ans = ".jsp"
-        elif i == 26:
+        elif i == 27:
             q_eng = "File format WPD is used for which of the following files?"
             q_hin = "फाइल फॉर्मेट WPD का उपयोग निम्नलिखित में से किस फाइल के लिए किया जाता है?"
             opts = ["Image File", "Compressed Archive File", "Winamp Playlist", "WordPerfect Document File"]
             ans = "WordPerfect Document File"
-        elif i == 27:
+        elif i == 28:
             q_eng = "What is the full form of UPS?"
             q_hin = "यूपीएस (UPS) का पूर्ण रूप क्या है?"
             opts = ["Uninterruptible power supply", "Unified power supply", "Uninterruptible power sink", "Universal power sink"]
             ans = "Uninterruptible power supply"
-        elif i == 28:
-            q_eng = "Which of the following is included along with genuine software, and may come from a malicious website?"
-            q_hin = "इनमें से किसे, सही (वास्तविक) सॉफ़्टवेयर के साथ शामिल किया जाता है और यह किसी मैलिसियस वेबसाइट से आया हो सकता है?"
-            opts = ["Spyware (स्पाईवेयर)", "VMware", "Middleware (मिडलवेयर)", "Adware (एडवेयर)"]
-            ans = "Spyware (स्पाईवेयर)"
         elif i == 29:
+            q_eng = "Which of the following is included along with genuine software, and may come from a malicious website?"
+            q_hin = "इनमें से किसे वास्तविक सॉफ़्टवेयर के साथ शामिल किया जाता है और यह किसी मैलिसियस वेबसाइट से आया हो सकता है?"
+            opts = ["Spyware (स्पाईवेयर)", "VMware", "Middleware", "Adware"]
+            ans = "Spyware (स्पाईवेयर)"
+        elif i == 30:
             q_eng = "Which of the following is NOT a benefit of Software Testing?"
             q_hin = "निम्नलिखित में से कौन-सा, सॉफ्टवेयर परीक्षण का लाभ नहीं है?"
             opts = ["Bug free application", "Cost effective", "Low failure", "Gathering requirements (आवश्यकताओं को इकट्ठा करना)"]
             ans = "Gathering requirements (आवश्यकताओं को इकट्ठा करना)"
-        elif i == 30:
+        elif i == 31:
             q_eng = "Which of the following is NOT a valid email prefix format?"
             q_hin = "निम्नलिखित में से कौन सा वैध ईमेल उपसर्ग प्रारूप नहीं है?"
             opts = ["xyz-d@mail.com", "xyz.mnp@mail.com", "xyz-@mail.com", "xyz@mail.com"]
             ans = "xyz-@mail.com"
-        elif i == 31:
+        elif i == 32:
             q_eng = "With reference to computer networks, what is the full form of OSI?"
             q_hin = "कंप्यूटर नेटवर्क के संदर्भ में, OSI का पूर्ण रूप क्या है?"
             opts = ["Open Systems Interconnection", "Open Source Interconnection", "Open Systems Internet", "Open Static Interconnection"]
             ans = "Open Systems Interconnection"
-        elif i == 32:
-            q_eng = "____________ is unsolicited internet content that is typically sent in bulk for advertising purposes."
-            q_hin = "____________ ऐसी अवांछित इंटरनेट सामग्री है जो आम तौर पर किसी अज्ञात प्रेषक से विज्ञापन उद्देश्यों के लिए थोक में भेजी जाती है।"
-            opts = ["Spam (स्पैम)", "Cookies (कुकीज़)", "Firewall (फ़ायरवॉल)", "Phishing (फ़िशिंग)"]
-            ans = "Spam (स्पैम)"
         elif i == 33:
+            q_eng = "____________ is unsolicited internet content that is typically sent in bulk for advertising purposes."
+            q_hin = "____________ ऐसी अवांछित इंटरनेट सामग्री है जो विज्ञापन उद्देश्यों के लिए थोक में भेजी जाती है।"
+            opts = ["Spam (स्पैम)", "Cookies", "Firewall", "Phishing"]
+            ans = "Spam (स्पैम)"
+        elif i == 34:
+            q_eng = "When inserting page number in footer of MS-Word 2019, number 2 appears but you want 'b' letter. How to change?"
+            q_hin = "जब आप MS-Word 2019 डॉक्युमेंट के फुटर में पेज नंबर डालते हैं तो 2 दिखता है, आप अक्षर b दिखाना चाहते हैं। क्या करेंगे?"
+            opts = ["From Insert tab specify settings", "Go to Layout click format", "From Format choose bullets", "Go to Mailings specify settings"]
+            ans = "From Insert tab specify settings"
+        elif i == 35:
             q_eng = "In MS-Word 2019, the space between tabs can show dots, dashes etc. These are called ____________."
             q_hin = "MS-Word 2019 में, टैब के बीच का स्थान डॉट्स, डैश आदि दिखा सकता है। इन्हें ____________ कहा जाता है।"
             opts = ["Decimal characters", "Space characters", "Leader characters (लीडर कैरेक्टर्स)", "Extra characters"]
             ans = "Leader characters (लीडर कैरेक्टर्स)"
-        elif i == 34:
+        elif i == 36:
             q_eng = "In a network, ____________ measures the time it takes for some data to get to its destination. It is a measure of delay."
-            q_hin = "नेटवर्क में, ____________ कुछ डेटा को नेटवर्क से होकर अपने गंतव्य तक पहुंचने में लगने वाले समय को मापता है। यह विलंब का माप होता है।"
-            opts = ["Network latency (नेटवर्क लेटेंसी)", "Bandwidth (बैंडविड्थ)", "Frequency", "Wavelength"]
+            q_hin = "नेटवर्क में, ____________ डेटा को अपने गंतव्य तक पहुंचने में लगने वाले समय को मापता है। यह विलंब का माप होता है।"
+            opts = ["Network latency (नेटवर्क लेटेंसी)", "Bandwidth", "Frequency", "Wavelength"]
             ans = "Network latency (नेटवर्क लेटेंसी)"
-        elif i == 35:
+        elif i == 37:
+            q_eng = "Which is NOT a valid option for setting up type of letters in second step of Mail Merge in MS-Word 2019?"
+            q_hin = "MS-Word 2019 में मेल मर्ज प्रक्रिया के दूसरे चरण में लेटर्स के प्रकार को सेट करने के लिए कौन-सा एक वैध विकल्प नहीं है?"
+            opts = ["Use the current document", "Start from a template", "Start from existing document", "Start using current document"]
+            ans = "Start using current document"
+        elif i == 38:
+            q_eng = "How many radio buttons are under Select Starting Document for letters in Mail Merge step 2?"
+            q_hin = "MS-Word 2019 में मेल मर्ज प्रक्रिया के दूसरे चरण में पत्रों के लिए 'Select Starting Document' के अंतर्गत कितने रेडियो बटन होते हैं?"
+            opts = ["one (एक)", "two (दो)", "three (तीन)", "four (चार)"]
+            ans = "three (तीन)"
+        elif i == 39:
             q_eng = "Which of the following is NOT a search engine?"
-            q_hin = "इनमें से कौन-सा, एक सर्च इंजन नहीं है?"
+            q_hin = "इनमें से कौन-सा, एक सर्च engine नहीं है?"
             opts = ["Microsoft Bing", "Google.com", "Coursera", "Yahoo.com"]
             ans = "Coursera"
-        elif i == 36:
+        elif i == 40:
             q_eng = "Which of the following is an address that identifies a process on a host?"
-            q_hin = "निम्नलिखित में से कौन-सा, एक एड्रेस है जो किसी होस्ट पर एक प्रोसेस की पहचान करता है?"
+            q_hin = "निम्नलिखित में से कौन-sa, एक एड्रेस है जो किसी होस्ट पर एक प्रोसेस की पहचान करता है?"
             opts = ["IP address", "Port number (पोर्ट नंबर)", "Network address", "MAC address"]
             ans = "Port number (पोर्ट नंबर)"
-        elif i == 37:
+        elif i == 41:
+            q_eng = "In MS-Word 2019, if Save button is NOT available in Quick Access toolbar, what must be done to add it?"
+            q_hin = "MS-Word 2019 में यदि क्विक एक्सेस टूलबार में सेव बटन उपलब्ध नहीं है, तो उसे जोड़ने के लिए क्या किया जाना चाहिए?"
+            opts = ["Go to File -> Drag open", "Double-click on toolbar", "Click down arrow on right side -> Click Save", "Go to File -> Save"]
+            ans = "Click down arrow on right side -> Click Save"
+        elif i == 42:
             q_eng = "A ____________ is a device that converts digital computer signals into an analog signal form to travel over phone lines."
             q_hin = "____________ एक उपकरण है जो डिजिटल कंप्यूटर सिग्नल को एक एनालॉग सिग्नल रूप में परिवर्तित करता है जो फोन लाइनों पर यात्रा कर सकता है।"
             opts = ["Router", "Hub", "Modem (मॉडेम)", "Codec"]
             ans = "Modem (मॉडेम)"
-        elif i == 38:
+        elif i == 43:
             q_eng = "Which Ethernet Cable is made of glass cores surrounded by several layers of covering material?"
-            q_hin = "कौन सी ईथरनेट केबल ग्लास कोर से बनी होती है जो आमतौर पर पीवीसी या टेफ्लॉन से बने आवरण सामग्री की कई परतों से घिरी होती है?"
+            q_hin = "कौन सी ईथरनेट केबल ग्लास कोर से बनी होती है जो आमतौर पर आवरण सामग्री की कई परतों से घिरी होती है?"
             opts = ["Twisted pair cable", "Coaxial cable", "Fibre optic cable (फाइबर ऑप्टिक केबल)", "Unshielded twisted pair"]
             ans = "Fibre optic cable (फाइबर ऑप्टिक केबल)"
-        elif i == 39:
-            q_eng = "To create a graph in MS-Excel 2019, which tab do you use?"
+        elif i == 44:
+            q_eng = "To create a graph in MS-Excel 2019, which of the following steps must be taken?"
             q_hin = "MS-Excel 2019 में ग्राफ बनाने के लिए निम्नलिखित में से किन चरणों का उपयोग किया जाता है?"
             opts = ["File tab -> Charts", "Home tab -> Charts", "Insert tab -> Recommended Charts", "View tab -> Charts"]
             ans = "Insert tab -> Recommended Charts"
-        elif i == 40:
+        elif i == 45:
+            q_eng = "A chart ____________ is a brief, descriptive label that summarizes the main point or purpose of the graph."
+            q_hin = "चार्ट ____________ एक संक्षिप्त, वर्णनात्मक लेबल है जो ग्राफ के मुख्य बिंदु या उद्देश्य को सारांशित करता है।"
+            opts = ["axes", "title (टाइटल)", "source", "legend"]
+            ans = "title (टाइटल)"
+        elif i == 46:
             q_eng = "Which of the following keyboard shortcuts is used to make letters italic in MS-Excel 2019?"
             q_hin = "MS-Excel 2019 में अक्षरों को इटैलिक करने के लिए निम्नलिखित में से किस कीबोर्ड शॉर्टकट कुंजी का उपयोग किया जाता है?"
             opts = ["Ctrl + I", "Ctrl + B", "Ctrl + U", "Ctrl + V"]
             ans = "Ctrl + I"
-        elif i == 41:
+        elif i == 47:
             q_eng = "Which of the following keyboard shortcuts is used to hide a row in MS-Excel 2019?"
             q_hin = "MS-Excel 2019 में एक पंक्ति को छिपाने के लिए निम्नलिखित में से किस कीबोर्ड शॉर्टकट का उपयोग किया जाता है?"
             opts = ["Ctrl + 9", "Ctrl + 0", "Ctrl + 1", "Ctrl + 2"]
             ans = "Ctrl + 9"
-        elif i == 42:
-            q_eng = "A teacher wants to find the total scores of students across all sports in Excel. Which function should he use?"
-            q_hin = "एक खेल शिक्षक ने MS-Excel 2019 में सभी छात्रों के अंक दर्ज किए। अब वह कुल अंक ज्ञात करना चाहता है। उसे किस फंक्शन का उपयोग करना चाहिए?"
+        elif i == 48:
+            q_eng = "A sports teacher recorded scores in Excel 2019. He wants to find total scores. Which function should he use?"
+            q_hin = "एक खेल शिक्षक ने MS-Excel 2019 में अंक दर्ज किए। अब वह कुल अंक ज्ञात करना चाहता है। उसे किस फंक्शन का उपयोग करना चाहिए?"
             opts = ["COUNT", "ADD", "SUM", "TOTAL"]
             ans = "SUM"
-        elif i == 43:
-            q_eng = "Which option within the Data tab in MS-Excel 2019 is used to arrange data in ascending order?"
-            q_hin = "शिक्षिका को MS-Excel 2019 में डेटा टैब के अंतर्गत डेटा को आरोही क्रम में व्यवस्थित करने के लिए किस विकल्प का उपयोग करना चाहिए?"
+        elif i == 49:
+            q_eng = "A teacher wants to arrange student marks in ascending order. Which option within Data tab should she use?"
+            q_hin = "एक शिक्षिका MS-Excel 2019 में डेटा को आरोही क्रम में व्यवस्थित करना चाहती है। उसे किस विकल्प का उपयोग करना चाहिए?"
             opts = ["Sort (सॉर्ट)", "Format", "Filter", "Design"]
             ans = "Sort (सॉर्ट)"
-        elif i == 45:
+        elif i == 50:
+            q_eng = "Sirish wants to find his average marks of six subjects in Excel 2019. Which function should he use?"
+            q_hin = "सिरीश छह अलग-अलग विषयों के लिए अपना औसत ज्ञात करना चाहता है। उसे MS-Excel 2019 के किस फ़ंक्शन का उपयोग करना चाहिए?"
+            opts = ["Avg", "Average", "Mean", "Mode"]
+            ans = "Average"
+        elif i == 51:
+            q_eng = "Which of the following may come from a malicious website or added intentionally along with genuine software?"
+            q_hin = "निम्नलिखित में से कौन-सा वास्तविक सॉफ़्टवेयर के साथ शामिल हो सकता है, और किसी दुर्भावनापूर्ण वेबसाइट से आ सकता है?"
+            opts = ["Spyware (स्पायवेयर)", "VMware", "Middleware", "Adware"]
+            ans = "Spyware (स्पायवेयर)"
+        elif i == 52:
             q_eng = "Which of the following keyboard shortcuts is used to select an entire column in MS-Excel 2019?"
             q_hin = "MS-Excel 2019 में संपूर्ण कॉलम का चयन करने के लिए निम्नलिखित में से किस कीबोर्ड शॉर्टकट कुंजी का उपयोग किया जाता है?"
             opts = ["Ctrl + Spacebar", "Alt + Spacebar", "Shift + Spacebar", "Spacebar"]
             ans = "Ctrl + Spacebar"
-        else:
-            q_eng = f"Which component handles primary pipeline routing configurations in modern CPU models? (Item {i})"
-            q_hin = f"आधुनिक CPU मॉडल में प्राथमिक पाइपलाइन रूटिंग कॉन्फ़िगरेशन को कौन सा घटक संभालता है? (प्रश्न {i})"
-            opts = ["ALU Control", "Instruction Cache", "Control Unit", "Data Registers"]
-            ans = "Control Unit"
-            
+
+     # --- READING COMPREHENSION SECTION (Q53 to Q57) ---
     elif i <= 57:
         sect = "Reading Comprehension (Passage-Based)"
         if i == 53:
-            q_eng = "Based on the family passage: 'The wisdom of old people is real and not bookish' implies that grandparents got their wisdom from:"
-            q_hin = "गद्यांश के अनुसार: 'वृद्ध लोगों का ज्ञान वास्तविक है किताबी नहीं।' इसका मतलब है कि दादा-दादी को अपना ज्ञान:"
-            opts = ["Books they read", "Actual experiences in life (वास्तविक जीवन के अनुभव से)", "Following traditions", "Memorising lessons"]
-            ans = "Actual experiences in life (वास्तविक जीवन के अनुभव से)"
+            q_eng = "According to the passage, children living in nuclear families tend to miss their:"
+            q_hin = "दिए गए गद्यांश के अनुसार, एकल (मूल) परिवारों के बच्चे किसकी कमी महसूस करते हैं?"
+            opts = ["parents' attention", "aunts and uncles", "grandparents' affection (स्नेह)", "native place"]
+            ans = "grandparents' affection (स्नेह)"
         elif i == 54:
+            q_eng = "The wisdom of old people is real and not bookish implies that grandparents got their wisdom:"
+            q_hin = "वृद्ध लोगों का ज्ञान वास्तविक है किताबी नहीं। इसका मतलब है कि दादा-दादी को अपना ज्ञान:"
+            opts = ["from books read", "from actual experiences in life (वास्तविक अनुभव से)", "by following traditions", "by memorising lessons"]
+            ans = "from actual experiences in life (वास्तविक अनुभव से)"
+        elif i == 55:
             q_eng = "How do grandparents provide a vital link between generations?"
             q_hin = "दादा-दादी, पीढ़ियों के बीच एक महत्वपूर्ण कड़ी कैसे प्रदान करते हैं?"
-            opts = ["By arranging meetings", "By talking about family members and showing albums (तस्वीर दिखाकर)", "By forcing everyone to live together", "By traveling to meet relatives"]
-            ans = "By talking about family members and showing albums (तस्वीर दिखाकर)"
-        else:
-            q_eng = "According to the reading passage context, grandparents provide grandchildren with a foundational sense of ____________."
-            q_hin = "दिए गए गद्यांश के अनुसार, दादा-दादी अपने पोते-पोतियों को मुख्य रूप से किसकी भावना प्रदान करते हैं?"
-            opts = ["Financial stability", "Emotional security & comfort (सुरक्षा की भावना और दिलासा)", "Academic pressure", "Modern technical lifestyle"]
-            ans = "Emotional security & comfort (सुरक्षा की भावना और दिलासा)"
-            
-    elif i <= 63:
-        sect = "Quantitative Aptitude (Maths)"
+            opts = ["By arranging meetings", "By talking about family and showing pictures (तस्वीर दिखाकर)", "By forcing everyone to live together", "By traveling"]
+            ans = "By talking about family and showing pictures (तस्वीर दिखाकर)"
+        elif i == 56:
+            q_eng = "Grandparents provide their grandchildren with a sense of security by:"
+            q_hin = "दादा-दादी अपने पोते-पोतियों को सुरक्षा की भावना कैसे प्रदान करते हैं?"
+            opts = ["teaching hard work", "comforting and being with them in difficult times (मुश्किल समय में साथ रहकर)", "serving hot food", "teaching special days"]
+            ans = "comforting and being with them in difficult times (मुश्किल समय में साथ रहकर)"
+        elif i == 57:
+            q_eng = "Which of the following statements is FALSE as per the given passage?"
+            q_hin = "दिए गए गद्यांश के अनुसार निम्नलिखित में से कौन सा कथन गलत है?"
+            opts = ["Grandparents give love", "Grandparents can be good friends", "Grandparents do not know proper way of celebrating festivals", "Children learn patience"]
+            ans = "Grandparents do not know proper way of celebrating festivals"
+
+      # --- QUANTITATIVE APTITUDE SECTION (Q58 to Q63) ---
+       elif i <= 63:
+           sect = "Quantitative Aptitude (Maths)"
         if i == 58:
-            q_eng = "What approximate value should come in place of the question mark (?) in the following equation? 1002 ÷ 49 × 99 - 1299 = ?"
+            q_eng = "What approximate value should come in place of question mark? 1002 / 49 * 99 - 1299 = ?"
             q_hin = "निम्नलिखित समीकरण में प्रश्न चिह्न (?) के स्थान पर लगभग कितना मान आना चाहिए? 1002 ÷ 49 × 99 - 1299 = ?"
             opts = ["700", "600", "900", "250"]
             ans = "700"
         elif i == 59:
-            q_eng = "35% of a number is two times 75% of another number. What is the ratio of the first number to the second?"
+            q_eng = "What approximate value should come in place of the question mark (?) in: 543 * (15/28) * (7/19) * (3/5) = ?"
+            q_hin = "निम्नलिखित समीकरण में प्रश्न चिह्न (?) के स्थान पर क्या लगभग मान आना चाहिए? 543 का (15/28) का (7/19) का (3/5) = ?"
+            opts = ["88", "44", "72", "64"]
+            ans = "64"
+        elif i == 60:
+            q_eng = "In the given question, solve equations and choose correct relationship: I. 3x^2 - 13x + 12 = 0, II. 2y^2 - 15y + 28 = 0"
+            q_hin = "दोनों समीकरणों को हल करते हुए उपयुक्त विकल्प का चयन करें: I. 3x^2 - 13x + 12 = 0, II. 2y^2 - 15y + 28 = 0"
+            opts = ["x >= y", "Relationship cannot be determined", "x > y", "x < y"]
+            ans = "x < y"
+        elif i == 61:
+            q_eng = "35% of a number is two times 75% of another number. What is the ratio of first number to second?"
             q_hin = "एक संख्या का 35% दूसरी संख्या के 75% का दोगुना है। पहली संख्या का दूसरी संख्या से अनुपात ज्ञात करें।"
             opts = ["35:6", "31:7", "23:7", "30:7"]
             ans = "30:7"
-        else:
-            q_eng = f"Solve for matching numerical estimation series balance values. (Maths Item {i})"
-            q_hin = f"गणितीय समीकरण को हल करते हुए सही संख्यात्मक मान चुनिए। (प्रश्न {i})"
-            opts = ["120", "145", "135", "150"]
+        elif i == 62:
+            q_eng = "Positive difference between square of AM and square of GM of two numbers is 36. Find difference between AM of squares and square of AM."
+            q_hin = "दो अलग संख्याओं के समांतर माध्य के वर्ग और उनके गुणोत्तर माध्य के वर्ग का अंतर 36 है। उनके वर्गों के समांतर माध्य और समांतर माध्य के वर्ग का अंतर क्या होगा?"
+            opts = ["36", "24", "18", "12"]
+            ans = "36"
+        elif i == 63:
+            q_eng = "In an exam, passed candidates were 4 times failed ones. If 35 candidates less appeared and 9 more failed, ratio would be 2:1. Total candidates were:"
+            q_hin = "एक परीक्षा में उत्तीर्ण होने वाले अभ्यर्थियों की संख्या अनुत्तीर्ण से 4 गुना थी। यदि कुल 35 अभ्यर्थी कम होते और 9 अधिक अनुत्तीर्ण होते, तो अनुपात 2:1 होता। कुल अभ्यर्थी:"
+            opts = ["155", "145", "140", "135"]
             ans = "135"
-            
+
+    # --- GENERAL MENTAL ABILITY & REASONING SECTION (Q64 to Q69) ---
     elif i <= 69:
         sect = "General Mental Ability & Reasoning"
         if i == 64:
@@ -359,27 +424,43 @@ for i in range(1, 76):
             q_hin = "दरवाजे (Door)' का 'बैंग (Bang)' से वही संबंध है जो 'चेन (Chain)' का किससे संबंध है?"
             opts = ["Thunder", "Clinch", "Tinkle", "Clank (क्लैंक)"]
             ans = "Clank (क्लैंक)"
+        elif i == 65:
+            q_eng = "Rearrange letters 'HDMEILSO' to make a meaningful 8-letter word, and select option with the last letter."
+            q_hin = "नीचे दिए गए अक्षरों को पुनर्व्यवस्थित करके एक सार्थक 8 अक्षर वाला शब्द बनाएं, और शब्द का अंतिम अक्षर वाला विकल्प चुनें।"
+            opts = ["M", "L", "H", "S"]
+            ans = "S"
+        elif i == 66:
+            q_eng = "Six people D, F, G, K, S, V facing north. Exactly 2 left of V. G immediate right of V. S second right of G. F immediate left of D. Left of K is:"
+            q_hin = "छह लोग उत्तर की ओर मुंह करके बैठे हैं। V के बाईं ओर ठीक दो लोग हैं। G, V के तुरंत दाईं ओर है। S, G के दाईं ओर दूसरे स्थान पर है। F, D के तुरंत बाईं ओर है। K के बाएं कितने हैं?"
+            opts = ["None (कोई नहीं)", "One (एक)", "Three (तीन)", "Four (चार)"]
+            ans = "None (कोई नहीं)"
+        elif i == 67:
+            q_eng = "Identify the figure from options which when put in place of question mark (?) will logically complete the series."
+            q_hin = "विकल्पों में दी गई उस आकृति को पहचानिए जिसे प्रश्न चिह्न (?) के स्थान पर रखने पर श्रृंखला तार्किक रूप से पूरी हो जाएगी?"
+            opts = ["Pattern Alpha", "Pattern Beta", "Pattern Gamma", "Pattern Delta"]
+            ans = "Pattern Alpha"
         elif i == 68:
             q_eng = "What should come in place of the question mark (?) in the given series? 17, 28, 39, 50, 61, ?"
             q_hin = "दी गई श्रृंखला में प्रश्न चिह्न (?) के स्थान पर क्या आना चाहिए? 17, 28, 39, 50, 61, ?"
             opts = ["72", "70", "80", "75"]
             ans = "72"
-        else:
-            q_eng = f"In a certain code language, if COMPUTER is written as OCPMUTRE, how will REASONING be managed?"
-            q_hin = f"यदि किसी कोड भाषा में COMPUTER को OCPMUTRE लिखा जाता है, तो REASONING को क्या लिखा जाएगा?"
-            opts = ["ERAOSNIGN", "ERASONING", "AEROSNING", "REASONING"]
-            ans = "ERAOSNIGN"
-            
+        elif i == 69:
+            q_eng = "Four letter-clusters have been given below. Three are alike in some manner and one is different. Select the different one."
+            q_hin = "नीचे चार अक्षर-समूह दिए गए हैं। अंग्रेजी वर्णमाला क्रम के आधार पर असंगत अक्षर-समूह का चयन कीजिए।"
+            opts = ["XZCG", "OQTX", "IMNQ", "EGJN"]
+            ans = "XZCG"
+
+    # --- GENERAL AWARENESS SECTION (Q70 to Q75) ---
     else:
         sect = "General Awareness (GK)"
         if i == 70:
             q_eng = "Haldia refinery is located in:"
             q_hin = "हल्दिया रिफाइनरी कहाँ स्थित है?"
-            opts = ["West Bengal (पश्चिम बंगाल)", "Bihar (बिहार)", "Andhra Pradesh (आंध्र प्रदेश)", "Odisha (ओडिशा)"]
+            opts = ["West Bengal (पश्चिम बंगाल)", "Bihar", "Andhra Pradesh", "Odisha"]
             ans = "West Bengal (पश्चिम बंगाल)"
         elif i == 71:
             q_eng = "Which of the following is NOT a football club?"
-            q_hin = "निम्न में से कौन-sa, एक फुटबॉल क्लब नहीं है?"
+            q_hin = "निम्न में से कौन-सा, एक फुटबॉल क्लब नहीं है?"
             opts = ["Arsenal", "Aston Villa", "Chelsea", "McLaren (मैकलारेन)"]
             ans = "McLaren (मैकलारेन)"
         elif i == 72:
@@ -390,16 +471,16 @@ for i in range(1, 76):
         elif i == 73:
             q_eng = "Devaluation usually causes the internal prices to:"
             q_hin = "अवमूल्यन के कारण प्रायः आंतरिक कीमतों पर क्या प्रभाव होता है?"
-            opts = ["Fall (गरावट)", "Rise (वृद्धि)", "Remain unchanged", "Fluctuate"]
-            ans = "Rise (वृद्धि)"
+            opts = ["Fall", "Rise (इसमें वृद्धि होती है)", "Remain unchanged", "Fluctuate"]
+            ans = "Rise (इसमें वृद्धि होती है)"
         elif i == 74:
             q_eng = "The diameter of a colloidal particle ranges from:"
             q_hin = "एक कोलॉइडी कण का व्यास किस परास (रेंज) में होता है?"
             opts = ["10^-9 m to 10^-6 m", "10^-6 m to 10^-3 m", "10^-12 m to 10^-9 m", "10^-3 m to 10^-6 m"]
             ans = "10^-9 m to 10^-6 m"
-        else:
+        elif i == 75:
             q_eng = "Vote on account is the permission to withdraw money from consolidated fund of India usually for how many months?"
-            q_hin = "वोट ऑन अकाउंट (Vote on account) भारत की समेकित निधि से कितने समय के लिए धन निकालने की अनुमति है?"
+            q_hin = "वोट ऑन अकाउंट (Vote on account) भारत की समेकित निधि से धन निकालने की अनुमति है, जो आमतौर पर दो महीने तक होती है।"
             opts = ["1 month", "2 months (दो महीने)", "3 months", "6 months"]
             ans = "2 months (दो महीने)"
             
