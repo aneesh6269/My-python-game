@@ -531,7 +531,7 @@ if not st.session_state.logged_in:
             final_score = st.session_state.score
             st.metric(label="Aapka Total Score", value=f"{final_score} / {total_qs}")
         
-        if final_score >= 28:  
+        if final_score >= 28:
             st.balloons()
             st.success(f"👑 MUBARAK HO! Aapne Quiz Clear kar liya! Absolute Champion!")
         else:
