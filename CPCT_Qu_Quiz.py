@@ -404,7 +404,7 @@ else:
     else:
         current_q = quiz_data[st.session_state.q_index]
         
-        st.markdown(f'<div class="main-card"><div class="section-badge">🎯 {current_q["section"]}</div><div class="header-text">CPCT Simulation Arena</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="main-card"><div class="section-badge">🎯 {current_q["section"]}</div><div class="header-text">CPCT PAPER TEST</div></div>', unsafe_allow_html=True)
         
         st.write(f"**Question {st.session_state.q_index + 1} of {len(quiz_data)}**")
         st.progress((st.session_state.q_index) / len(quiz_data))
