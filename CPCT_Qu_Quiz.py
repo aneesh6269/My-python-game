@@ -85,11 +85,10 @@ design_css = """
 """
 st.markdown(design_css, unsafe_allow_html=True)
 
-# --- 2. FULL 75 QUESTIONS DATA BANK (100% INDIVIDUAL MATCHED) ---
+# --- 2. FULL 75 QUESTIONS DATA BANK ---
 quiz_data = []
 
 for i in range(1, 76):
-    # --- COMPUTER PROFICIENCY SECTION (Q1 to Q52) ---
     if i <= 52:
         sect = "Computer Proficiency & IT Skills"
         if i == 1:
@@ -412,7 +411,7 @@ for i in range(1, 76):
             ans = "36"
         elif i == 63:
             q_eng = "In an exam, passed candidates were 4 times failed ones. If 35 candidates less appeared and 9 more failed, ratio would be 2:1. Total candidates were:"
-            q_hin = "एक परीक्षा में उत्तीर्ण होने वाले अभ्यर्थियों की संख्या अनुत्तीर्ण से 4 गुना थी। यदि कुल 35 अभ्यर्थी कम होते और 9 अधिक अनुत्तीर्ण होते, तो अनुपात 2:1 होता। कुल अभ्यर्थी:"
+            q_hin = "एक परीक्षा में उत्तीर्ण होने वाले अभ्यर्थियों की संख्या अनुत्तीर्ण से 4 गुना थी। यदि कुल 35 अभ्यर्थी कम होते 'और 9 अधिक अनुत्तीर्ण होते, तो अनुपात 2:1 होता। कुल अभ्यर्थी:"
             opts = ["155", "145", "140", "135"]
             ans = "135"
 
@@ -494,7 +493,8 @@ if "q_index" not in st.session_state:
     st.session_state.q_index = 0
     st.session_state.score = 0
     st.session_state.quiz_over = False
-    st.session_state.submitted = False
+    # NAYA STATE: Har question ka lock status alag se list me yaad rakhega
+    st.session_state.locked_questions = [False] * len(quiz_data)
 
 # ---- A. NEON GLOW LOGIN SCREEN ----
 if not st.session_state.logged_in:
@@ -520,7 +520,7 @@ else:
         st.session_state.q_index = 0
         st.session_state.score = 0
         st.session_state.quiz_over = False
-        st.session_state.submitted = False
+        st.session_state.locked_questions = [False] * len(quiz_data)
         st.rerun()
 
     # Results System
@@ -531,7 +531,7 @@ else:
         
         st.metric(label="Aapka Total Score", value=f"{final_score} / {total_qs}")
         
-        if final_score >= 38:  # 38 marks CPCT cutoff score
+        if final_score >= 38:  
             st.balloons()
             st.success(f"👑 MUBARAK HO! Aapने Quiz Clear kar liya! Absolute Champion!")
         else:
@@ -541,26 +541,30 @@ else:
             st.session_state.q_index = 0
             st.session_state.score = 0
             st.session_state.quiz_over = False
-            st.session_state.submitted = False
+            st.session_state.locked_questions = [False] * len(quiz_data)
             st.rerun()
 
     # Active Live Question Layout
     else:
         current_q = quiz_data[st.session_state.q_index]
         
-        st.markdown(f'<div class="main-card"><div class="section-badge">🎯 {current_q["section"]}</div><div class="header-text">CPCT Simulation Arena</div></div>', unsafe_allow_html=True)
+        # Check if current question is already locked
+        is_current_locked = st.session_state.locked_questions[st.session_state.q_index]
+        
+        st.markdown(f'<div class="main-card"><div class="section-badge">🎯 {current_q["section"]}</div><div class="header-text">CPCT PAPER TEST </div></div>', unsafe_allow_html=True)
         
         st.write(f"**Question {st.session_state.q_index + 1} of {len(quiz_data)}**")
         st.progress((st.session_state.q_index) / len(quiz_data))
         
         st.markdown(f'<div class="question-box"><b>EN:</b> {current_q["q_eng"]}<div class="hindi-text"><b>HI:</b> {current_q["q_hin"]}</div></div>', unsafe_allow_html=True)
         
+        # Option input element (Disabled if already locked)
         choice = st.radio(
             "Sahi jawab chuniye / Choose correct option:", 
             current_q["options"], 
             index=None, 
             key=f"q_{st.session_state.q_index}",
-            disabled=st.session_state.submitted
+            disabled=is_current_locked
         )
         
         st.write("---")
@@ -571,14 +575,13 @@ else:
             if st.session_state.q_index > 0:
                 if st.button("⬅️ Previous Question"):
                     st.session_state.q_index -= 1
-                    st.session_state.submitted = False
                     st.rerun()
                     
         with col2:
-            if not st.session_state.submitted:
+            if not is_current_locked:
                 if st.button("🔒 Lock Answer"):
                     if choice is not None:
-                        st.session_state.submitted = True
+                        st.session_state.locked_questions[st.session_state.q_index] = True
                         if choice == current_q["answer"]:
                             st.session_state.score += 1
                         st.rerun()
@@ -593,7 +596,6 @@ else:
                 if st.button("Next Question ➡️"):
                     if st.session_state.q_index < len(quiz_data) - 1:
                         st.session_state.q_index += 1
-                        st.session_state.submitted = False
                     else:
                         st.session_state.quiz_over = True
                     st.rerun()
