@@ -268,3 +268,46 @@ if st.button("Submit Quiz"):
         st.info("👏 Great job! You passed with a good score.")
     else:
         st.warning("Keep practicing! You can improve with more revision.")
+
+# --- LOGIN SCREEN ---
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
+
+if not st.session_state.logged_in:
+    st.markdown("<div class='main-card'><h2 class='header-text'>🔐 Login</h2></div>", unsafe_allow_html=True)
+    username = st.text_input("Enter Username")
+    password = st.text_input("Enter Password", type="password")
+    if st.button("Login"):
+        if username == "aneesh" and password == "1234":   # तुम चाहो तो यहाँ अपना पासवर्ड बदल सकते हो
+            st.session_state.logged_in = True
+            st.success("✅ Login Successful!")
+        else:
+            st.error("❌ Invalid Username or Password")
+    st.stop()
+
+# --- QUIZ SCREEN ---
+st.markdown("<h1 class='header-text'>🎓 CPCT QUIZ</h1>", unsafe_allow_html=True)
+st.markdown("<div class='gold-line'></div>", unsafe_allow_html=True)
+
+score = 0
+
+for idx, q in enumerate(quiz_data, start=1):
+    st.markdown(f"<div class='section-badge'>{q['section']}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='question-box'>{idx}. {q['q_eng']}<br><span class='hindi-text'>{q['q_hin']}</span></div>", unsafe_allow_html=True)
+    
+    user_ans = st.radio(f"Select your answer for Q{idx}:", q["options"], key=f"q{idx}")
+    
+    if user_ans == q["answer"]:
+        score += 1
+
+# --- RESULT SCREEN ---
+if st.button("Submit Quiz"):
+    st.success(f"✅ You scored {score} out of {len(quiz_data)}")
+    st.markdown("<div class='gold-line'></div>", unsafe_allow_html=True)
+    if score == len(quiz_data):
+        st.balloons()
+        st.info("🎉 Perfect Score! Excellent work Aneesh!")
+    elif score >= len(quiz_data) * 0.7:
+        st.info("👏 Great job! You passed with a good score.")
+    else:
+        st.warning("Keep practicing! You can improve with more revision.")
