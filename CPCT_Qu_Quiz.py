@@ -527,7 +527,7 @@ else:
 
     # Results System
     if st.session_state.quiz_over:
-        st.markdown('<div class="main-card"><div class="header-text">🏆 QUIZ RESULTS 🏆</div></div>', unsafe_allow_html=True)
+        st.markdown('<div class="main-card"><div class="header-text">🏆 TEST RESULTS 🏆</div></div>', unsafe_allow_html=True)
         total_qs = len(quiz_data)
         final_score = st.session_state.score
         
@@ -552,7 +552,7 @@ else:
         current_q = quiz_data[st.session_state.q_index]
         is_current_locked = st.session_state.locked_questions[st.session_state.q_index]
         
-        st.markdown(f'<div class="main-card"><div class="section-badge">🎯 {current_q["section"]}</div><div class="header-text">CPCT Simulation Arena</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="main-card"><div class="section-badge">🎯 {current_q["section"]}</div><div class="header-text">CPCT-TEST-PAPER</div></div>', unsafe_allow_html=True)
         
         st.write(f"**Question {st.session_state.q_index + 1} of {len(quiz_data)}**")
         st.progress((st.session_state.q_index) / len(quiz_data))
