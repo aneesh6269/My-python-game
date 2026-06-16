@@ -89,6 +89,7 @@ st.markdown(design_css, unsafe_allow_html=True)
 quiz_data = []
 
 for i in range(1, 76):
+    # --- COMPUTER PROFICIENCY SECTION (Q1 to Q52) ---
     if i <= 52:
         sect = "Computer Proficiency & IT Skills"
         if i == 1:
@@ -120,7 +121,7 @@ for i in range(1, 76):
             q_eng = "The most common input devices are:"
             q_hin = "इनमे से सबसे आम इनपुट डिवाइस कौन-size हैं?"
             opts = ["Microphone and Printer (माइक्रोफोन और प्रिंटर)", "Scanner and Monitor (स्कैनर और मॉनीटर)", "Digital Camera and Speaker (डिजिटल कैमरा और स्पीकर)", "Keyboard and Mouse (कीबोर्ड और माउस)"]
-            ans = "Keyboard and Mouse (कीबोर्ड और माउस)"
+            ans = "Keyboard and Mouse (कीबोर्ड tobacco)"
         elif i == 7:
             q_eng = "In a computer, which device is functionally opposite to a keyboard?"
             q_hin = "एक कंप्यूटर में, कौन-sa डिवाइस कार्यात्मक रूप से कीबोर्ड से विपरीत है?"
@@ -298,7 +299,7 @@ for i in range(1, 76):
             ans = "Click down arrow on right side -> Click Save"
         elif i == 42:
             q_eng = "A ____________ is a device that converts digital computer signals into an analog signal form to travel over phone lines."
-            q_hin = "____________ एक उपकरण है जो डिजिटल कंप्यूटर सिग्नल को एक एनालॉग सिग्नल रूप में परिवर्तित करता है जो फोन लाइनों पर यात्रा कर सकता है।"
+            q_hin = "____________ एक उपकरण है जो डिजिटल computer सिग्नल को एक एनालॉग सिग्नल रूप में परिवर्तित करता है जो फोन लाइनों पर यात्रा कर सकता है।"
             opts = ["Router", "Hub", "Modem (मॉडेम)", "Codec"]
             ans = "Modem (मॉडेम)"
         elif i == 43:
@@ -411,7 +412,7 @@ for i in range(1, 76):
             ans = "36"
         elif i == 63:
             q_eng = "In an exam, passed candidates were 4 times failed ones. If 35 candidates less appeared and 9 more failed, ratio would be 2:1. Total candidates were:"
-            q_hin = "एक परीक्षा में उत्तीर्ण होने वाले अभ्यर्थियों की संख्या अनुत्तीर्ण से 4 गुना थी। यदि कुल 35 अभ्यर्थी कम होते 'और 9 अधिक अनुत्तीर्ण होते, तो अनुपात 2:1 होता। कुल अभ्यर्थी:"
+            q_hin = "एक परीक्षा में उत्तीर्ण होने वाले अभ्यर्थियों की संख्या अनुत्तीर्ण से 4 गुना थी। यदि कुल 35 अभ्यर्थी कम होते और 9 अधिक अनुत्तीर्ण होते, तो अनुपात 2:1 होता। कुल अभ्यर्थी:"
             opts = ["155", "145", "140", "135"]
             ans = "135"
 
@@ -459,7 +460,7 @@ for i in range(1, 76):
             ans = "West Bengal (पश्चिम बंगाल)"
         elif i == 71:
             q_eng = "Which of the following is NOT a football club?"
-            q_hin = "निम्न में से कौन-सा, एक फुटबॉल क्लब नहीं है?"
+            q_hin = "निम्न में से कौन-sa, एक फुटबॉल क्लब नहीं है?"
             opts = ["Arsenal", "Aston Villa", "Chelsea", "McLaren (मैकलारेन)"]
             ans = "McLaren (मैकलारेन)"
         elif i == 72:
@@ -493,8 +494,8 @@ if "q_index" not in st.session_state:
     st.session_state.q_index = 0
     st.session_state.score = 0
     st.session_state.quiz_over = False
-    # NAYA STATE: Har question ka lock status alag se list me yaad rakhega
     st.session_state.locked_questions = [False] * len(quiz_data)
+    st.session_state.user_choices = [None] * len(quiz_data)
 
 # ---- A. NEON GLOW LOGIN SCREEN ----
 if not st.session_state.logged_in:
@@ -521,6 +522,7 @@ else:
         st.session_state.score = 0
         st.session_state.quiz_over = False
         st.session_state.locked_questions = [False] * len(quiz_data)
+        st.session_state.user_choices = [None] * len(quiz_data)
         st.rerun()
 
     # Results System
@@ -542,27 +544,28 @@ else:
             st.session_state.score = 0
             st.session_state.quiz_over = False
             st.session_state.locked_questions = [False] * len(quiz_data)
+            st.session_state.user_choices = [None] * len(quiz_data)
             st.rerun()
 
     # Active Live Question Layout
     else:
         current_q = quiz_data[st.session_state.q_index]
-        
-        # Check if current question is already locked
         is_current_locked = st.session_state.locked_questions[st.session_state.q_index]
         
-        st.markdown(f'<div class="main-card"><div class="section-badge">🎯 {current_q["section"]}</div><div class="header-text">CPCT PAPER TEST </div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="main-card"><div class="section-badge">🎯 {current_q["section"]}</div><div class="header-text">CPCT Simulation Arena</div></div>', unsafe_allow_html=True)
         
         st.write(f"**Question {st.session_state.q_index + 1} of {len(quiz_data)}**")
         st.progress((st.session_state.q_index) / len(quiz_data))
         
         st.markdown(f'<div class="question-box"><b>EN:</b> {current_q["q_eng"]}<div class="hindi-text"><b>HI:</b> {current_q["q_hin"]}</div></div>', unsafe_allow_html=True)
         
-        # Option input element (Disabled if already locked)
+        current_saved_choice = st.session_state.user_choices[st.session_state.q_index]
+        radio_index = current_q["options"].index(current_saved_choice) if current_saved_choice in current_q["options"] else None
+        
         choice = st.radio(
             "Sahi jawab chuniye / Choose correct option:", 
             current_q["options"], 
-            index=None, 
+            index=radio_index, 
             key=f"q_{st.session_state.q_index}",
             disabled=is_current_locked
         )
@@ -581,6 +584,7 @@ else:
             if not is_current_locked:
                 if st.button("🔒 Lock Answer"):
                     if choice is not None:
+                        st.session_state.user_choices[st.session_state.q_index] = choice
                         st.session_state.locked_questions[st.session_state.q_index] = True
                         if choice == current_q["answer"]:
                             st.session_state.score += 1
@@ -588,10 +592,10 @@ else:
                     else:
                         st.warning("Kripya pehle ek option select kijiye!")
             else:
-                if choice == current_q["answer"]:
+                if current_saved_choice == current_q["answer"]:
                     st.success(f"🎉 Sahi Jawab! (+1 Mark)")
                 else:
-                    st.error(f"❌ Galat Jawab! Sahi Answer tha: {current_q['answer']}")
+                    st.error(f"❌ Galat Jawab! Aapने '{current_saved_choice}' chuna tha. Sahi Answer tha: {current_q['answer']}")
                     
                 if st.button("Next Question ➡️"):
                     if st.session_state.q_index < len(quiz_data) - 1:
