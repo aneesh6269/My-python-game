@@ -121,7 +121,7 @@ for i in range(1, 76):
             q_eng = "The most common input devices are:"
             q_hin = "इनमे से सबसे आम इनपुट डिवाइस कौन-size हैं?"
             opts = ["Microphone and Printer (माइक्रोफोन और प्रिंटर)", "Scanner and Monitor (स्कैनर और मॉनीटर)", "Digital Camera and Speaker (डिजिटल कैमरा और स्पीकर)", "Keyboard and Mouse (कीबोर्ड और माउस)"]
-            ans = "Keyboard and Mouse (कीबोर्ड tobacco)"
+            ans = "Keyboard and Mouse (कीबोर्ड और माउस)"
         elif i == 7:
             q_eng = "In a computer, which device is functionally opposite to a keyboard?"
             q_hin = "एक कंप्यूटर में, कौन-sa डिवाइस कार्यात्मक रूप से कीबोर्ड से विपरीत है?"
